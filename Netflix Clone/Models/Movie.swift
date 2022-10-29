@@ -4,13 +4,12 @@
 //
 //  Created by Tunay Toksöz on 29.10.2022.
 //
-
 import Foundation
 
 struct TrendingMoviesResponse: Codable {
-    let page: Int
+    let page: Int?
     let results: [Movie]
-    let totalPages, totalResults: Int
+    let totalPages, totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
         case page, results
@@ -21,22 +20,23 @@ struct TrendingMoviesResponse: Codable {
 
 // MARK: - Result
 struct Movie: Codable {
-    let adult: Bool
-    let backdropPath: String
-    let id: Int
+    let adult: Bool?
+    let backdropPath: String?
+    let id: Int?
     let title: String?
-    let originalLanguage: String
+    let originalLanguage: String?
     let originalTitle: String?
-    let overview, posterPath: String
-    let mediaType: MediaType
-    let genreIDS: [Int]
-    let popularity: Double
+    let overview, posterPath: String?
+    let mediaType: MediaType?
+    let genreIDS: [Int]?
+    let popularity: Double?
     let releaseDate: String?
     let video: Bool?
-    let voteAverage: Double
-    let voteCount: Int
+    let voteAverage: Double?
+    let voteCount: Int?
     let name, originalName, firstAirDate: String?
     let originCountry: [String]?
+    
 
     enum CodingKeys: String, CodingKey {
         case adult

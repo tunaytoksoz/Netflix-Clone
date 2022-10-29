@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let sectionTitle : [String] = ["Top Movies", "Popular", "Trending TV", "Upcoming Movies", "Top Rated" ]
+    let sectionTitle : [String] = ["Top Movies", "Trending TV", "Popular",  "Upcoming Movies", "Top Rated" ]
 
     private let homeFeedTable : UITableView = {
         
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         homeFeedTable.tableHeaderView = headerView
         
         configureNavBar()
-        getTrendingMovies()
+        fetchData()
         
     }
     
@@ -58,8 +58,21 @@ class HomeViewController: UIViewController {
         homeFeedTable.frame = view.bounds
     }
     
-    private func getTrendingMovies(){
-        APICaller().getTrendingMovies { _ in
+    private func fetchData(){
+        APICaller.shared.getTrendingMovies { _ in
+            
+        }
+        
+        APICaller.shared.getTrendingTvs { _ in
+            
+        }
+        APICaller.shared.getUpComingMovies { _ in
+            
+        }
+        APICaller.shared.getPopular { _ in
+            
+        }
+        APICaller.shared.getTopRated { _ in
             
         }
     }
@@ -85,7 +98,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
         header.textLabel?.textColor = .black
-        
+        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
