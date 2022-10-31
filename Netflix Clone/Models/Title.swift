@@ -6,9 +6,9 @@
 //
 import Foundation
 
-struct TrendingMoviesResponse: Codable {
+struct TrendingTitleResponse: Codable {
     let page: Int?
-    let results: [Movie]
+    let results: [Title]
     let totalPages, totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -19,7 +19,7 @@ struct TrendingMoviesResponse: Codable {
 }
 
 // MARK: - Result
-struct Movie: Codable {
+struct Title: Codable {
     let adult: Bool?
     let backdropPath: String?
     let id: Int?
