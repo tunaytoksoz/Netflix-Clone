@@ -83,4 +83,14 @@ class HeroHeaderUIView: UIView {
     required init(coder: NSCoder) {
         fatalError()
     }
+    
+    public func configure(model: TitleViewModel){
+        
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.PosterURL)") else {return}
+        
+        heroImageView.sd_setImage(with: url)
+        
+        
+        
+    }
 }
